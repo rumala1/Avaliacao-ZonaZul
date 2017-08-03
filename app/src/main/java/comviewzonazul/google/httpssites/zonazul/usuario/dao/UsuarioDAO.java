@@ -93,12 +93,13 @@ public class UsuarioDAO {
         database = null;
     }
 
-    public int retornarId(String login) {
-        Cursor cursor = getDatabase().query(DatabaseHelper.Usuarios.TABELA, DatabaseHelper.Usuarios.COLUNAS, DatabaseHelper.Usuarios.LOGIN + "=?", new String[] { login }, null, null, null, null);
-        if (cursor != null) {
+    public  int retornarId(String login_) {
+        Cursor cursor = getDatabase().query(DatabaseHelper.Usuarios.TABELA, DatabaseHelper.Usuarios.COLUNAS, DatabaseHelper.Usuarios.LOGIN + "=?", new String[]{ login_ }, null, null, null);
+
+        if(cursor != null){
             cursor.moveToFirst();
-            return Integer.parseInt(cursor.getString(0));
         }
-        return -1;
+        int id = Integer.parseInt(cursor.getString(0));
+        return id;
     }
 }

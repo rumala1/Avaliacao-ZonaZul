@@ -61,7 +61,7 @@ public class ClienteDAO {
     public void salvarCliente(){
         retornoLogin();
         ContentValues valores = new ContentValues();
-        int id_usuario = retornarId(login);
+        int id_usuario = usuarioDAO.retornarId(login);
         Toast.makeText(context_,Integer.toString(id_usuario), Toast.LENGTH_LONG).show();
         valores.put(DatabaseHelper.Clientes.SALDO, "0");
         valores.put(DatabaseHelper.Clientes.EMAIL, cliente.getEmail());
@@ -107,7 +107,7 @@ public class ClienteDAO {
     }
 
     public  int retornarId(String login_) {
-            Cursor cursor = getDatabase().query(DatabaseHelper.Usuarios.TABELA, DatabaseHelper.Usuarios.COLUNAS, DatabaseHelper.Usuarios.LOGIN + "=?", new String[]{ login }, null, null, null);
+            Cursor cursor = getDatabase().query(DatabaseHelper.Usuarios.TABELA, DatabaseHelper.Usuarios.COLUNAS, DatabaseHelper.Usuarios.LOGIN + "=?", new String[]{ login_ }, null, null, null);
 
             if(cursor != null){
                 cursor.moveToFirst();

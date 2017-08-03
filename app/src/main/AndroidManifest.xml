@@ -30,6 +30,10 @@
         <activity
             android:name=".cliente.gui.PrincipalClienteActivity"
             android:label="@string/title_activity_principal_cliente"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".cliente.gui.EditarClienteActivity"
+            android:label="@string/title_activity_editar_cliente"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

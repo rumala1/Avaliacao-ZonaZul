@@ -29,4 +29,5 @@
     <string name="title_activity_cliente_compra">ClienteCompra</string>
     <string name="msg_Cadastrado">\"Cliente cadastrado\"</string>
     <string name="title_activity_principal_cliente">PrincipalClienteActivity</string>
+    <string name="title_activity_editar_cliente">EditarClienteActivity</string>
 </resources>

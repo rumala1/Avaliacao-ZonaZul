@@ -17,7 +17,7 @@ import comviewzonazul.google.httpssites.zonazul.usuario.negocio.UsuarioNegocio;
 import util.Mensagem;
 
 public class CadastroClienteActivity2 extends AppCompatActivity {
-    EditText txt_email, txt_cep, txt_numero, txt_complemeto, txt_cidade;
+    EditText txt_email, txt_cep, txt_numero, txt_complemento, txt_cidade;
     Endereco endereco;
     ClienteNegocio clienteNegocio;
     Cliente cliente;
@@ -37,7 +37,7 @@ public class CadastroClienteActivity2 extends AppCompatActivity {
         txt_email = (EditText) findViewById(R.id.txt_email);
         txt_cep = (EditText) findViewById(R.id.txt_cep);
         txt_numero = (EditText) findViewById(R.id.txt_numero);
-        txt_complemeto = (EditText) findViewById(R.id.txt_complemento);
+        txt_complemento = (EditText) findViewById(R.id.txt_complemento);
         txt_cidade = (EditText) findViewById(R.id.txt_cidade);
     }
 
@@ -72,7 +72,7 @@ public class CadastroClienteActivity2 extends AppCompatActivity {
         String email = txt_email.getText().toString();
         String cep = txt_cep.getText().toString();
         String numero = txt_numero.getText().toString();
-        String complemento = txt_complemeto.getText().toString();
+        String complemento = txt_complemento.getText().toString();
         String cidade = txt_cidade.getText().toString();
         endereco = new Endereco(numero,complemento,cep,cidade);
         cliente = new Cliente(email,endereco,id);
