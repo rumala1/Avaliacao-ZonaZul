@@ -61,7 +61,7 @@ public class ClienteDAO {
     public void salvarCliente(){
         retornoLogin();
         ContentValues valores = new ContentValues();
-        int id_usuario = usuarioDAO.retornarId(login);
+        int id_usuario = retornarId(login);
         Toast.makeText(context_,Integer.toString(id_usuario), Toast.LENGTH_LONG).show();
         valores.put(DatabaseHelper.Clientes.SALDO, "0");
         valores.put(DatabaseHelper.Clientes.EMAIL, cliente.getEmail());
@@ -70,6 +70,7 @@ public class ClienteDAO {
         valores.put(DatabaseHelper.Clientes.NUMERO, cliente.getEndereco().getNumero());
         valores.put(DatabaseHelper.Clientes.CIDADE, cliente.getEndereco().getCidade());
         valores.put(DatabaseHelper.Clientes.USUARIO, id_usuario);
+        Toast.makeText(context_,"eae", Toast.LENGTH_LONG).show();
         long id_cliente = getDatabase().insert(DatabaseHelper.Clientes.TABELA_CLIENTES, null, valores);
         ContentValues cv = new ContentValues();
         cv.put(DatabaseHelper.Perfis.ID_USUARIO,id_usuario);
@@ -102,18 +103,18 @@ public class ClienteDAO {
         return null;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public  int retornarId(String login_) {
+        Cursor cursor = getDatabase().query(DatabaseHelper.Usuarios.TABELA, DatabaseHelper.Usuarios.COLUNAS, DatabaseHelper.Usuarios.LOGIN + "=?", new String[]{ login_ }, null, null, null);
+        if(cursor != null){
+            cursor.moveToFirst();
+        }
+        int id = Integer.parseInt(cursor.getString(0));
+        return id;
+
     }
 
-    public  int retornarId(String login_) {
-            Cursor cursor = getDatabase().query(DatabaseHelper.Usuarios.TABELA, DatabaseHelper.Usuarios.COLUNAS, DatabaseHelper.Usuarios.LOGIN + "=?", new String[]{ login_ }, null, null, null);
-
-            if(cursor != null){
-                cursor.moveToFirst();
-            }
-            int id = Integer.parseInt(cursor.getString(0));
-            return id;
+    public Cliente getCliente() {
+        return cliente;
     }
 }
 

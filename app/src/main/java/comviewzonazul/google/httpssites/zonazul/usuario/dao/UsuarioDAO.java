@@ -68,6 +68,7 @@ public class UsuarioDAO {
             String nome = cursor.getString(1);
             usuario.set_id(id);
             usuario.setNome(nome);
+            cursor.close();
             return usuario;
         }
         return null;
@@ -81,8 +82,10 @@ public class UsuarioDAO {
             int cliente = cursor.getInt(2);
             Toast.makeText(context_,Integer.toString(cliente), Toast.LENGTH_LONG).show();
             if(cliente == 1){
+                cursor.close();
                 return true;
             }
+            cursor.close();
             return false;
         }
         return false;
@@ -95,11 +98,11 @@ public class UsuarioDAO {
 
     public  int retornarId(String login_) {
         Cursor cursor = getDatabase().query(DatabaseHelper.Usuarios.TABELA, DatabaseHelper.Usuarios.COLUNAS, DatabaseHelper.Usuarios.LOGIN + "=?", new String[]{ login_ }, null, null, null);
-
         if(cursor != null){
             cursor.moveToFirst();
         }
         int id = Integer.parseInt(cursor.getString(0));
         return id;
+
     }
 }
